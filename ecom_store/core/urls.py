@@ -7,5 +7,5 @@ app_name = 'core'
 urlpatterns = [
     path('', frontpage, name='frontpage'),
     path('shop/', shop, name='shop'),
-    path('shop/<slug:slug>', product, name='product')
+    path('shop/<slug:slug>', product, name='product'),
 ]
