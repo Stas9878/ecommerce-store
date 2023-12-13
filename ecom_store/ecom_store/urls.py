@@ -22,5 +22,6 @@ from core.views import *
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('core.urls')),
-    path('shop/', shop, name='shop'),
+    # path('product/', include('product.urls')),
+    path('add_to_cart/', include('cart.urls'))
 ]
