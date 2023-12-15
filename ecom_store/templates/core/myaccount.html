@@ -1,0 +1,51 @@
+{% extends 'core/base.html' %}
+
+{% block title %}Профиль - мебель поволжья{% endblock %}
+
+{% block content %}
+
+<div class="max-w-6xl mx-auto p-6">
+    <h1 class="mb-5 text-3xl">Мой профиль</h1>
+
+    <div class="mb-6">
+        <strong>Имя: </strong> {{ request.user.get_full_name }}<br>
+        <strong>Имя пользователя: </strong> {{ request.user.username }}<br>
+        <strong>Электронная почта: </strong> {{ request.user.email }}<br><br>
+
+        <a href="{% url 'core:edit_myaccount' %}" class="inline-block py-2 px-6 rounded-xl text-white bg-purple-500">Редактировать</a>
+    </div>
+    <hr>
+
+    <h2 class="my-6 text-xl">Мои заказы</h2>
+    <div class="w-full mb-6 p-6 flex flex-wrap bg-gray-100 rounded-xll">
+        <div class="mb-6 flex justify-between">
+            <a href="">Номер заказа: 1</a>
+        </div>
+
+        <div class="mb-6 w-full">
+            <div class="product mb-6 flex pr-6">
+                <a href="" class="w-1/4">
+                    <img class="hover:shadow-lg rounded-xl" src="1">
+                </a>
+
+                <div class="w-3/4 pl-6">
+                    <div class="flex justify-between">
+                        <a href="" class="text-lg">Название товара</a>
+                        <p class="mb-6 pt-1 text-gray-400">цена</p>
+                    </div>
+                    <hr>
+
+                    <div class="mt-6">
+                        Кол-во: 1
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div>
+            <p class="texxt-lg">Дата заказа: 31313</p>
+            <p class="text-lg">Итого: </p>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
