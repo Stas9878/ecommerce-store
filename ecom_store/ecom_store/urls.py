@@ -29,5 +29,6 @@ urlpatterns = [
     path('login/', LoginView.as_view(template_name='core/login.html'), name='login'),
     path('logout/', logout_user, name='logout'),
     #cart
+    path('cart/', include('cart.urls')),
     path('add_to_cart/', include('cart.urls'))
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

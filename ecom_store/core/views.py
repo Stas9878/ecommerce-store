@@ -20,8 +20,8 @@ def signup(request):
         form = SignUpForm()
     return render(request, 'core/signup.html', {'form': form})
 
-def login_user(request):
-    return render(request, 'core/login.html')
+# def login_user(request):
+#     return render(request, 'core/login.html')
 
 def logout_user(request):
     if request.user.is_authenticated:
