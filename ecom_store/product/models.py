@@ -38,7 +38,7 @@ class Product(models.Model):
                 self.save()
 
                 return self.thumbnail.url
-            return 'https://via.placeholder.com/2440x240x.jpg'
+            return 'https://placehold.co/240x240'
     
     def make_thumbnail(self, image, size=(300, 300)):
         img = Image.open(image)
