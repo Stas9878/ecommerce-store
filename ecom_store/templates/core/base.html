@@ -28,7 +28,14 @@
                     <a href="{% url 'core:signup' %}">Регистрация</a>
                     <a href="{% url 'core:login' %}">Войти</a>
                 {% endif %}
-                {% include 'cart/menu_cart.html' %}
+
+                <div 
+                    hx-get="{% url 'cart:hx_menu_cart' %}"
+                    hx-trigger="update-menu-cart from:body"
+                    hx-swap="innerHTML">
+
+                    {% include 'cart/menu_cart.html' %}
+                </div>
             </div>
         </div>
     </nav>
