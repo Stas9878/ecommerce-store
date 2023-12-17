@@ -30,6 +30,8 @@ ALLOWED_HOSTS = []
 
 SESSION_COOKIE_AGE = 86400
 CART_SESSION_ID = 'cart'
+STRIPE_API_KEY_PUBLISHABLE = 'pk_test_TYooMQauvdEDq54NiTphI7jx'
+STRIPE_API_KEY_HIDDEN = 'sk_test_4eC39HqLyjWDarjtT1zdp7dc'
 
 # Application definition
 

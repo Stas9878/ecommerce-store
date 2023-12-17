@@ -4,79 +4,156 @@
 
 {% block content %}
 <div class="max-w-6xl mx-auto flex flex-wrap items-start py-6 px-6 xl:px-0">
-    <form method="post" action="{% url 'order:start_order' %}">
-        {% csrf_token %}
-        <div class="product w-full lg:w-3/4">
-            <h1 class="mb-5 text-3xl">Оформление заказа</h1>
-            <p class="text-gray-400">
-                Данные нужны для курьера и сообщений об изменениях статуса вашего заказа
-            </p>
-            <div class="w-full p-6">
-                <div class="mb-6 p-6 bg-gray-100 rounded-xl">
-                    <h2 class="mb-5 text-uppercase text-lg">Получатель</h2>
+    <div class="product w-full lg:w-3/4">
+        <h1 class="mb-5 text-3xl">Оформление заказа</h1>
+        <p class="text-gray-400">
+            Данные нужны для курьера и сообщений об изменениях статуса вашего заказа
+        </p>
+        <div class="w-full p-6">
+            <div class="mb-6 p-6 bg-gray-100 rounded-xl">
+                <h2 class="mb-5 text-uppercase text-lg">Получатель</h2>
 
-                    <div class="flex space-x-6">
-                        <div class="w-1/2 mb-4">
-                            <label class="inline-block mb-2">Имя</label>
-                            <input name="first_name" type="text" class="w-full p-5 rounded-xl" value="{{ request.user.first_name }}">
-                        </div>
-
-                        <div class="w-1/2 mb-4">
-                            <label class="inline-block mb-2">Фамилия</label>
-                            <input name="last_name" type="text" class="w-full p-5 rounded-xl" value="{{ request.user.last_name }}">
-                        </div>
+                <div class="flex space-x-6">
+                    <div class="w-1/2 mb-4">
+                        <label class="inline-block mb-2">Имя</label>
+                        <input name="first_name" type="text" class="w-full p-5 rounded-xl" value="{{ request.user.first_name }}">
                     </div>
 
-                    <div class="mb-4">
-                        <label class="inline-block mb-2">Адрес доставки</label>
-                        <input name="address" type="text" class="w-full p-5 rounded-xl">
-                    </div>
-
-                    <div class="flex space-x-6">
-                        <div class="w-1/2 mb-4">
-                            <label class="inline-block mb-2">Почтовый индекс</label>
-                            <input name="zipcode" type="text" class="w-full p-5 rounded-xl">
-                        </div>
-
-                        <div class="w-1/2 mb-4">
-                            <label class="inline-block mb-2">Область</label>
-                            <input name="place" type="text" class="w-full p-5 rounded-xl">
-                        </div>
+                    <div class="w-1/2 mb-4">
+                        <label class="inline-block mb-2">Фамилия</label>
+                        <input name="last_name" type="text" class="w-full p-5 rounded-xl" value="{{ request.user.last_name }}">
                     </div>
                 </div>
 
-                <div class="mb-6 p-6 bg-gray-100 rounded-xl">
-                    <h2 class="mb-5 text-uppercase text-lg">Контактная информация</h2>
-
-                    <div class="mb-4">
-                        <label class="inline-block mb-2">Электронная почта</label>
-                        <input name="email" type="email" class="w-full p-5 rounded-xl" value="{{ request.user.email }}">
-                    </div>
-
-                    <div class="mb-4">
-                        <label class="inline-block mb-2">Номер телефона</label>
-                        <input name="phone" type="phone" class="w-full p-5 rounded-xl">
-                    </div>
+                <div class="mb-4">
+                    <label class="inline-block mb-2">Адрес доставки</label>
+                    <input name="address" type="text" class="w-full p-5 rounded-xl">
                 </div>
 
-                <div class="mb-6 p-6 bg-gray-100 rounded-xl">
-                    <h2 class="mb-5 text-uppercase text-lg">Платёжная информация</h2>
+                <div class="flex space-x-6">
+                    <div class="w-1/2 mb-4">
+                        <label class="inline-block mb-2">Почтовый индекс</label>
+                        <input name="zipcode" type="text" class="w-full p-5 rounded-xl">
+                    </div>
+
+                    <div class="w-1/2 mb-4">
+                        <label class="inline-block mb-2">Область</label>
+                        <input name="place" type="text" class="w-full p-5 rounded-xl">
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="summary w-1/4 p-6 bg-gray-100 rounded-xl mt-3">
-            <h1 class="uppercase text-lg mb-5">Ваш заказ</h1>
 
-            <div class="mb-6 flex justify-between">
-                <span class="font-semibold">Всего:</span>
-                <span>{{ cart.get_total_cost }} руб</span>
+            <div class="mb-6 p-6 bg-gray-100 rounded-xl">
+                <h2 class="mb-5 text-uppercase text-lg">Контактная информация</h2>
+
+                <div class="mb-4">
+                    <label class="inline-block mb-2">Электронная почта</label>
+                    <input name="email" type="email" class="w-full p-5 rounded-xl" value="{{ request.user.email }}">
+                </div>
+
+                <div class="mb-4">
+                    <label class="inline-block mb-2">Номер телефона</label>
+                    <input name="phone" type="phone" class="w-full p-5 rounded-xl">
+                </div>
             </div>
-        <br>
-        <button 
-            class="inline-block px-8 py-3 rounded-xl bg-purple-500 hover:bg-purple-700 text-white">
-            Оформить заказ
-        </button>
+
+            <div class="mb-6 p-6 bg-gray-100 rounded-xl">
+                <h2 class="mb-5 text-uppercase text-lg">Платёжная информация</h2>
+            </div>
         </div>
-    </form>
+    </div>
+    <div class="summary w-1/4 p-6 bg-gray-100 rounded-xl mt-3">
+        <h1 class="uppercase text-lg mb-5">Ваш заказ</h1>
+
+        <div class="mb-6 flex justify-between">
+            <span class="font-semibold">Всего:</span>
+            <span>{{ cart.get_total_cost }} руб</span>
+        </div>
+    <br>
+    <button 
+        onclick="buy(event)"
+        class="inline-block px-8 py-3 rounded-xl bg-purple-500 hover:bg-purple-700 text-white">
+        Оформить заказ
+    </button>
+    </div>
 </div>
+{% endblock %}
+
+{% block scripts %}
+    <script type="application/javascript" src="https://js.stripe.com/v3/"></script>
+    <script>
+        function validateForm(data) {
+            let errors = []
+
+            if (data.first_name === '') {
+                errors.push('Поле имя пустое')
+            }
+
+            if (data.last_name === '') {
+                errors.push('Поле фамилия пустое')
+            }
+
+            if (data.email === '') {
+                errors.push('Поле электронная почта пустое')
+            }
+
+            if (data.phone === '') {
+                errors.push('Поле телефон пустое')
+            }
+
+            if (data.address === '') {
+                errors.push('Поле адрес пустое')
+            }
+
+            if (data.zipcode === '') {
+                errors.push('Поле почтовый индекс пустое')
+            }
+
+            if (data.place === '') {
+                errors.push('Поле область пустое')
+            }
+            return errors
+        }
+        function buy(event) {
+            event.preventDefault()
+
+            let data = {
+                'first_name': document.querySelector('input[name=first_name]').value,
+                'last_name': document.querySelector('input[name=last_name]').value,
+                'email': document.querySelector('input[name=email]').value,
+                'phone': document.querySelector('input[name=phone]').value,
+                'address': document.querySelector('input[name=address]').value,
+                'zipcode': document.querySelector('input[name=zipcode]').value,
+                'place': document.querySelector('input[name=place]').value,
+            }
+
+            let errors = validateForm(data)
+            if (errors.length) {
+                console.log('Errors', errors)
+            }
+            else {
+                var stripe = Stripe('{{ pub_key }}')
+                fetch('/order/start_order/', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRFToken': '{{ csrf_token }}',
+                    },
+                    credentials: 'same-origin',
+                    body: JSON.stringify(data)
+                }).then(function(response) {
+                    return response.json()
+                }).then(function(session) {
+                    return stripe.redirectToCheckout({ sessionId: session.session.id })
+                }).then(function(result){
+                    if (result.error) {
+                        alert(result.error.message)
+                    }
+                }).catch(function(error) {
+                    console.log('Errors', error)
+                }) 
+            }
+            return false
+        }
+    </script>
 {% endblock %}
