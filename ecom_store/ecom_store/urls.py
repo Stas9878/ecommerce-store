@@ -24,5 +24,7 @@ urlpatterns = [
     #cores
     path('', include('core.urls')),
     #cart
-    path('cart/', include('cart.urls'))
+    path('cart/', include('cart.urls')),
+    #order
+    path('order/', include('order.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
