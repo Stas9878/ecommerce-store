@@ -21,5 +21,6 @@ def product(request, slug):
                     content=content,
                     created_by=request.user
                 )
+            
             return redirect('core:product', slug=slug)
     return render(request, 'product/product.html', {'product': product})

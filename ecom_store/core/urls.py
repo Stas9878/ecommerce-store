@@ -17,4 +17,5 @@ urlpatterns = [
     #shop
     path('shop/', shop, name='shop'),
     path('shop/<slug:slug>', product, name='product'),
+    
 ]
