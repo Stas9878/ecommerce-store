@@ -18,6 +18,9 @@
     <div class="information w-full lg:w-2/5 lg:p-6">
         <h1 class="text-2xl">{{ product.name }}</h1>
         <p class="mt-1 text-gray-400">{{ product.price }} руб.</p>
+        {% if product.get_rating > 0 %}
+            <p class="mt-1 text-gray-400">Рейтинг: {{ product.get_rating|floatformat }} / 5</p>
+        {% endif %}
         {% if product.description %}
             <p class="mt-6 text-gray-700">{{ product.description }}</p>
         {% else %}
@@ -29,6 +32,41 @@
             hx-target="#menu-cart-button"
             hx-swap="outerHTML">В корзину
         </a>
+    </div>
+    <div class="w-full mt-6">
+        <h2 class="text-xl">Отзывы</h2>
+
+        {% if request.user.is_authenticated %}
+            <form method="post" class="mt-6 mb-6 p-6 bg-gray-100 rounded-xl">
+                {% csrf_token %}
+                <div>
+                    <label>Рейтинг</label><br>
+                    <select name="rating">
+                        {% for i in '12345' %}
+                        <option value="{{ i }}">{{ i }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div>
+                    <label>Комментарии</label><br>
+                    <textarea name="content"></textarea>
+                </div>
+                <div>
+                    <button>Оставить отзыв</button>
+                </div>
+            </form>
+        {% endif %}
+
+        {% for rev in product.reviews.all %}
+            <div class="px-4 py-6 bg-gray-100 rounded-xl mb-4">
+                <strong>Оценка: </strong>{{ rev.rating }}/ 5
+                <br>
+                <strong>Дата: </strong> {{ rev.created_at|date:'d-m-Y' }}
+                <br>
+                <strong>Комментарий: </strong>
+                {{ rev.content }}
+            </div>
+        {% endfor %}
     </div>
 </div>
 {% endblock %}
