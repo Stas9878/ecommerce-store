@@ -27,6 +27,8 @@ class Order(models.Model):
     status = models.CharField(max_length=20, choices=STATUS_CHOICES, default=ORDERED)
 
     class Meta:
+        verbose_name_plural = 'Заказы'
+        verbose_name = 'Заказ'
         ordering = ('-created_at',)
     
     def get_total_price(self):
@@ -39,6 +41,10 @@ class OrderItem(models.Model):
     product = models.ForeignKey(Product, related_name='items', on_delete=models.CASCADE)
     price = models.IntegerField()
     quantity = models.IntegerField(default=1)
+
+    class Meta:
+        verbose_name_plural = 'Товары в заказе'
+        verbose_name = 'Товар в заказе'
 
     def get_total_price(self):
         return self.price

@@ -8,14 +8,14 @@ def add_to_cart(request, product_id):
     cart = Cart(request)
     cart.add(product_id)
 
-    return render(request, 'cart/menu_cart.html')
+    return render(request, 'cart/partials/menu_cart.html')
 
 def cart(request):
     return render(request, 'cart/cart.html')
 
 def success(request):
-    # cart = Cart(request)
-    # cart.clear()
+    cart = Cart(request)
+    cart.clear()
     return render(request, 'cart/success.html')
 
 def update_cart(request, product_id, action):
@@ -55,7 +55,7 @@ def checkout(request):
     return render(request, 'cart/checkout.html', {'pub_key': pub_key})
 
 def hx_menu_cart(request):
-    return render(request, 'cart/menu_cart.html')
+    return render(request, 'cart/partials/menu_cart.html')
 
 def hx_cart_total(request):
     return render(request, 'cart/partials/cart_total.html')

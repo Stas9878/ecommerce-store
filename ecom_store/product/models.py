@@ -8,6 +8,8 @@ class Category(models.Model):
     slug = models.SlugField()
 
     class Meta:
+        verbose_name_plural = 'Категории'
+        verbose_name = 'Категория'
         ordering = ('name', )
 
     def __str__(self):
@@ -24,6 +26,8 @@ class Product(models.Model):
     thumbnail = models.ImageField(upload_to='uploads/', blank=True, null=True)
 
     class Meta:
+        verbose_name_plural = 'Товары'
+        verbose_name = 'Товар'
         ordering = ('-created_at', )
 
     def __str__(self):
