@@ -13,6 +13,11 @@ def add_to_cart(request, product_id):
 def cart(request):
     return render(request, 'cart/cart.html')
 
+def success(request):
+    # cart = Cart(request)
+    # cart.clear()
+    return render(request, 'cart/success.html')
+
 def update_cart(request, product_id, action):
     cart = Cart(request)
 

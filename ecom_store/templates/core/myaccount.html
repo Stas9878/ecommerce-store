@@ -33,7 +33,7 @@
                         <div class="w-3/4 pl-6">
                             <div class="flex justify-between">
                                 <a href="{% url 'core:product' item.product.slug %}" class="text-lg">Название товара: {{ item.product.name }}</a>
-                                <p class="mb-6 pt-1 text-gray-400">Цена: {{ item.product.price }}</p>
+                                <p class="mb-6 pt-1 text-gray-400">Цена: {{ item.get_total_price }} руб.</p>
                             </div>
                             <hr>
 
@@ -46,7 +46,7 @@
             </div>
             <div>
                 <p class="text-lg">Дата заказа: {{ order.created_at }}</p>
-                <p class="text-lg">Итого:</p>
+                <p class="text-lg">Итого: {{ order.get_total_price }} руб.</p>
             </div>
         </div>
     {% endfor %}

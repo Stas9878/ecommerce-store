@@ -57,8 +57,8 @@
                 </div>
             </div>
 
-            <div class="mb-6 p-6 bg-gray-100 rounded-xl">
-                <h2 class="mb-5 text-uppercase text-lg">Платёжная информация</h2>
+            <div class="mb-6 p-6 bg-gray-100 rounded-xl" id="errors">
+                
             </div>
         </div>
     </div>
@@ -82,6 +82,7 @@
 {% block scripts %}
     <script type="application/javascript" src="https://js.stripe.com/v3/"></script>
     <script>
+        let el = document.querySelector('#errors')
         function validateForm(data) {
             let errors = []
 
@@ -112,6 +113,25 @@
             if (data.place === '') {
                 errors.push('Поле область пустое')
             }
+
+            if (errors.length > 0) {
+                let html = '<ul>';
+
+                errors.forEach((error) => {
+                    html += '<li style="color:red">' + error + '</li>';
+                    })
+                
+                el.innerHTML = html + '</ul>'; 
+                
+                window.scrollTo({
+                    top: 1000,  // это координат где должен быть экран
+                    behavior: 'smooth'  //Это анимация
+                })       
+                
+            } else {
+                el.innerHTML = ''
+            } 
+            
             return errors
         }
         function buy(event) {
