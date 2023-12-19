@@ -44,11 +44,12 @@ def start_order(request):
             zipcode=data['zipcode'],
             place=data['place'],
             phone=data['phone'],
-            payment_intent=payment_intent,
             paid=True,
             paid_amount = total_price
             )
-        
+    
+    order.payment_intent = payment_intent
+
     for item in cart:
         product = item['product']
         quantity = int(item['quantity'])
@@ -58,6 +59,4 @@ def start_order(request):
             product=product, 
             price=price, 
             quantity=quantity)
-    # cart.clear()
-
     return JsonResponse({'session': session, 'order': payment_intent})
