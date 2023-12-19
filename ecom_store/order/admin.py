@@ -7,11 +7,12 @@ class OrderItemInline(admin.TabularInline):
 
 @admin.register(Order)
 class OrderAdmin(admin.ModelAdmin):
-    list_display = ['id', 'status', 'created_at']
+    list_display = ['id', 'user', 'email','status', 'created_at']
     list_filter = ['status', 'created_at']
+    list_display_links = ['user']
     search_fields = ['first_name', 'address', 'email']
     inlines = [OrderItemInline]
 
 @admin.register(OrderItem)
 class OrderItemAdmin(admin.ModelAdmin):
-    pass
+    list_display = ('order', 'price',)

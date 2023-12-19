@@ -16,6 +16,9 @@ class Category(models.Model):
     def __str__(self):
         return self.name
     
+    def total_items(self):
+        return len(self.product.all())
+    
 class Product(models.Model):
     category = models.ForeignKey(Category, related_name='product', on_delete=models.CASCADE)
     name = models.CharField(max_length=255)

@@ -36,6 +36,9 @@ class Order(models.Model):
             return self.paid_amount
         return 0
 
+    def __str__(self):
+        return self.user.username
+
 class OrderItem(models.Model):
     order = models.ForeignKey(Order, related_name='items', on_delete=models.CASCADE)
     product = models.ForeignKey(Product, related_name='items', on_delete=models.CASCADE)
@@ -48,3 +51,6 @@ class OrderItem(models.Model):
 
     def get_total_price(self):
         return self.price
+
+    def __str__(self):
+        return self.order.user.username
